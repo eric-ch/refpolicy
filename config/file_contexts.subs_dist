@@ -41,6 +41,7 @@
 /var/volatile/tmp /var/tmp
 /var/volatile/lock /var/lock
 /var/volatile/run/lock /var/lock
+/var/volatile/etc /etc
 
 # busybox aliases
 # quickly match up the busybox built-in tree to the base filesystem tree
