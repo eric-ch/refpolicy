@@ -31,6 +31,8 @@ ifdef(`distro_debian',`
 
 /etc/systemd/network(/.*)?	gen_context(system_u:object_r:net_conf_t,s0)
 
+/etc/udhcpc.d(/.*)?		gen_context(system_u:object_r:dhcp_etc_t,s0)
+
 ifdef(`distro_redhat',`
 /etc/sysconfig/network-scripts/.*resolv\.conf -- gen_context(system_u:object_r:net_conf_t,s0)
 /etc/sysconfig/networking(/.*)? gen_context(system_u:object_r:net_conf_t,s0)
@@ -74,6 +76,8 @@ ifdef(`distro_redhat',`
 /usr/sbin/mii-tool\.net-tools	--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
 /usr/sbin/pump			--	gen_context(system_u:object_r:dhcpc_exec_t,s0)
 /usr/sbin/tc			--	gen_context(system_u:object_r:ifconfig_exec_t,s0)
+
+/sbin/udhcpc			--	gen_context(system_u:object_r:dhcpc_exec_t,s0)
 
 #
 # /usr/lib/busybox
