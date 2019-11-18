@@ -27,6 +27,7 @@
 # if /dev/ptmx is a symlink to /dev/pts/ptmx then we need to have /dev/pts/ptmx
 # relabelled before sshd etc are ready to accept connections
 /dev/pts/ptmx		-c	gen_context(system_u:object_r:ptmx_t,s0)
+/dev/pts/[0-9]+		-c	<<none>>
 
 /dev/tts/[^/]*		-c	gen_context(system_u:object_r:tty_device_t,s0)
 
