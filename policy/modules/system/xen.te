@@ -422,7 +422,9 @@ optional_policy(`
 #
 
 allow xenstored_t self:capability { dac_override ipc_lock sys_resource };
-allow xenstored_t self:unix_stream_socket { accept listen };
+allow xenstored_t self:unix_stream_socket { accept listen create_stream_socket_perms };
+allow xenstored_t self:unix_dgram_socket create_socket_perms;
+allow xenstored_t self:process { setrlimit signal };
 
 manage_files_pattern(xenstored_t, xenstored_tmp_t, xenstored_tmp_t)
 manage_dirs_pattern(xenstored_t, xenstored_tmp_t, xenstored_tmp_t)
