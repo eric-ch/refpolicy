@@ -12,3 +12,5 @@
 
 /var/spool/fax(/.*)?		gen_context(system_u:object_r:getty_runtime_t,s0)
 /var/spool/voice(/.*)?		gen_context(system_u:object_r:getty_runtime_t,s0)
+
+/sbin/init\.root-ro	--	gen_context(system_u:object_r:init_exec_t,s0)
