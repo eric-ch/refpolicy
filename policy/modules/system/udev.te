@@ -33,6 +33,12 @@ ifdef(`enable_mcs',`
 	init_ranged_daemon_domain(udev_t, udev_exec_t, s0 - mcs_systemhigh)
 ')
 
+type udevrc_t;
+type udevrc_exec_t;
+init_script_domain(udevrc_t, udevrc_exec_t)
+udev_domtrans(udevrc_t)
+role system_r types udevrc_t;
+
 ########################################
 #
 # Local policy
@@ -372,4 +378,19 @@ optional_policy(`
 
 optional_policy(`
 	xserver_read_xdm_pid(udev_t)
+')
+
+# Initscript udevrc_t.
+corecmd_exec_all_executables(udevrc_t)
+dev_search_sysfs(udevrc_t)
+files_read_etc_files(udevrc_t)
+kernel_read_system_state(udevrc_t)
+kernel_read_hotplug_sysctls(udevrc_t)
+term_use_console(udevrc_t)
+fs_search_tmpfs(udevrc_t)
+seutil_domtrans_setfiles(udevrc_t)
+allow udevrc_t self:fifo_file manage_fifo_file_perms;
+
+optional_policy(`
+	mount_domtrans(udevrc_t)
 ')
